@@ -5,7 +5,9 @@ const passwordContainers = document.querySelectorAll(".main__form-input-containe
 const firstPassword = document.querySelector("#password-first")
 const confirmPassword = document.querySelector("#password-confirm")
 const yearsTeaching = document.querySelector("#years-teaching")
+const yearsRemote = document.querySelector("#years-remote")
 
+// Password show-hide-btn
 passwordContainers.forEach(passwordContainer => {
 	const passwordBox = passwordContainer.querySelector("input")
 	const showHideBtn = passwordContainer.querySelector("button")
@@ -16,28 +18,49 @@ passwordContainers.forEach(passwordContainer => {
 	})
 })
 
+// Form Validation
 function validateCheckboxes() {
 	for (let i = 0; i < checkboxArr.length; i++) {
-		if (checkboxArr[i].checked) return true
+		if (checkboxArr[i].checked) {
+			checkboxArr[0].setCustomValidity("")
+			return
+		}
 	}
 
-	return false
+	checkboxArr[0].setCustomValidity("Please select a checkbox")
 }
+validateCheckboxes()
 
-form.addEventListener("submit", e => {
-	e.preventDefault()
+checkboxArr.forEach(checkbox => {
+	checkbox.addEventListener("change", () => {
+		validateCheckboxes()
+		form.reportValidity
+	})
+})
 
-	if (!validateCheckboxes()) checkboxArr[0].setCustomValidity("Please Select a Checkbox")
-	if (firstPassword.value === confirmPassword.value) firstPassword.setCustomValidity("Passwords Don't Match")
-
-	const yearsRemote = document.querySelector("#years-remote")
-	if (parseInt(yearsTeaching.value) < parseInt(yearsRemote.value))
-		yearsTeaching.setCustomValidity("Years Teaching Must be Less Or Equal to Years Remote")
+function validateItems(conditional, element, text) {
+	if (conditional) {
+		element.setCustomValidity(text)
+	} else {
+		element.setCustomValidity("")
+	}
 
 	form.reportValidity()
-})
-submitBtn.addEventListener("click", () => {
-	checkboxArr[0].setCustomValidity("")
-	firstPassword.setCustomValidity("")
-	yearsTeaching.setCustomValidity("")
-})
+}
+
+const validatePassword = () =>
+	validateItems(firstPassword.value !== confirmPassword.value, firstPassword, "Passwords Don't Match")
+const validateYearsTeaching = () =>
+	validateItems(
+		parseInt(yearsTeaching.value) < parseInt(yearsRemote.value),
+		yearsTeaching,
+		"Please select total number of years working"
+	)
+
+firstPassword.addEventListener("change", validatePassword)
+confirmPassword.addEventListener("change", validatePassword)
+
+yearsTeaching.addEventListener("change", validateYearsTeaching)
+yearsRemote.addEventListener("change", validateYearsTeaching)
+
+form.addEventListener("submit", e => e.preventDefault())
