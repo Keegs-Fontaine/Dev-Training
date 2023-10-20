@@ -1,0 +1,159 @@
+@forward "./reset";
+@use "./globals" as *;
+
+// GENERAL STYLES
+body {
+	> * {
+		padding-inline: 1rem;
+	}
+
+	color: $clr-neutral-100;
+}
+
+.wrapper {
+	max-width: 45rem;
+	margin-inline: auto;
+}
+
+.highlight {
+	font-weight: bolder;
+}
+
+.required label::after,
+p.required::after,
+p.required-before::before {
+	content: "*";
+	color: $clr-primary;
+}
+
+// Header
+.main-header {
+	padding-block: 1rem;
+	text-align: center;
+	background-image: url("../assets//Background\ -\ Network\ Dots.svg");
+	background-color: $clr-neutral-500;
+	border-bottom: 0.25rem solid $clr-primary;
+
+	&__highlight {
+		display: block;
+		font-weight: bolder;
+		font-size: 2rem;
+	}
+
+	&__subtitle {
+		font-style: italic;
+	}
+}
+
+// Main
+.main {
+	$spacing-value: 3rem;
+	$form-gap: 0.8rem;
+
+	display: grid;
+	margin-top: $spacing-value;
+	gap: $spacing-value;
+
+	p.required-before {
+		text-align: center;
+	}
+
+	input,
+	select {
+		padding: 0.5rem;
+		font-size: 0.8rem;
+	}
+
+	&__info {
+		text-align: center;
+
+		a {
+			color: $clr-primary;
+			text-decoration: underline;
+		}
+	}
+
+	&__form {
+		$border-value: 0.25rem solid $clr-neutral-500;
+
+		padding-block: $spacing-value;
+		border-top: $border-value;
+		border-bottom: $border-value;
+
+		> * {
+			margin-bottom: 2rem;
+		}
+	}
+
+	&__form-input-container {
+		margin-bottom: $form-gap;
+		display: flex;
+		flex-direction: column;
+		position: relative;
+	}
+
+	&__form-grouping-container {
+		display: flex;
+		gap: $form-gap;
+
+		> * {
+			width: 50%;
+		}
+	}
+
+	&__large-section {
+		display: grid;
+		gap: 1rem;
+	}
+
+	&__checkbox-grouping-container {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(5rem, 1fr));
+		gap: $form-gap;
+	}
+
+	.password {
+		position: relative;
+	}
+
+	.show-hide-btn {
+		position: absolute;
+		top: 40%;
+		bottom: 0;
+		right: 2%;
+		translate: 0 1px;
+		font-size: 0.9rem;
+		font-weight: bolder;
+	}
+
+	&__form-info-container {
+		margin: 2rem;
+		text-align: center;
+
+		> * {
+			margin: inherit;
+		}
+	}
+
+	&__form-submit-btn {
+		padding: 1rem;
+		margin-inline: auto;
+		display: block;
+		color: white;
+		background-color: $clr-primary;
+	}
+
+	&__footer {
+		display: grid;
+		place-content: center;
+	}
+
+	@include media() {
+		&__form-container {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			grid-template-rows: 1fr 1fr;
+			gap: $form-gap;
+		}
+	}
+}

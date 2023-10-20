@@ -1,0 +1,164 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;700&display=swap");
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font: inherit;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  font: inherit;
+}
+
+ul {
+  list-style-type: none;
+}
+
+button {
+  all: unset;
+  cursor: pointer;
+}
+
+body {
+  font-family: "Open sans";
+}
+
+body {
+  color: #333;
+}
+body > * {
+  padding-inline: 1rem;
+}
+
+.wrapper {
+  max-width: 45rem;
+  margin-inline: auto;
+}
+
+.highlight {
+  font-weight: bolder;
+}
+
+.required label::after,
+p.required::after,
+p.required-before::before {
+  content: "*";
+  color: #b91f31;
+}
+
+.main-header {
+  padding-block: 1rem;
+  text-align: center;
+  background-image: url("../assets//Background - Network Dots.svg");
+  background-color: #d8d8d8;
+  border-bottom: 0.25rem solid #b91f31;
+}
+.main-header__highlight {
+  display: block;
+  font-weight: bolder;
+  font-size: 2rem;
+}
+.main-header__subtitle {
+  font-style: italic;
+}
+
+.main {
+  display: grid;
+  margin-top: 3rem;
+  gap: 3rem;
+}
+.main p.required-before {
+  text-align: center;
+}
+.main input,
+.main select {
+  padding: 0.5rem;
+  font-size: 0.8rem;
+}
+.main__info {
+  text-align: center;
+}
+.main__info a {
+  color: #b91f31;
+  text-decoration: underline;
+}
+.main__form {
+  padding-block: 3rem;
+  border-top: 0.25rem solid #d8d8d8;
+  border-bottom: 0.25rem solid #d8d8d8;
+}
+.main__form > * {
+  margin-bottom: 2rem;
+}
+.main__form-input-container {
+  margin-bottom: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.main__form-grouping-container {
+  display: flex;
+  gap: 0.8rem;
+}
+.main__form-grouping-container > * {
+  width: 50%;
+}
+.main__large-section {
+  display: grid;
+  gap: 1rem;
+}
+.main__checkbox-grouping-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(5rem, 1fr));
+  gap: 0.8rem;
+}
+.main .password {
+  position: relative;
+}
+.main .show-hide-btn {
+  position: absolute;
+  top: 40%;
+  bottom: 0;
+  right: 2%;
+  translate: 0 1px;
+  font-size: 0.9rem;
+  font-weight: bolder;
+}
+.main__form-info-container {
+  margin: 2rem;
+  text-align: center;
+}
+.main__form-info-container > * {
+  margin: inherit;
+}
+.main__form-submit-btn {
+  padding: 1rem;
+  margin-inline: auto;
+  display: block;
+  color: white;
+  background-color: #b91f31;
+}
+.main__footer {
+  display: grid;
+  place-content: center;
+}
+@media screen and (min-width: 35em) {
+  .main__form-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 0.8rem;
+  }
+}/*# sourceMappingURL=main.css.map */

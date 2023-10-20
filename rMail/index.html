@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="index.css">
+    <title>rMail</title>
+</head>
+<body>
+    <!-- I use the "|" pipe character to separate utility classes from specific element classes -->
+
+    <header>
+        <main class="| flex">
+            <div class="logo">
+                <img src="./assets/rMail/logo.svg" alt="">
+            </div>
+            <p class="person | flex">
+                <img src="./assets/rMail/avatar.svg" alt="">
+                <span class="name">Jane Doe</span>
+            </p>
+        </main>
+        <form class="| flex" action="/">
+            <button class="new_btn | flex">
+                <span>+</span>
+                <span>New</span>
+            </button>
+            <div class="| flex">
+                <button class="| flex">
+                    <img src="./assets/rMail/refresh.svg" alt="">
+                </button>
+                <button class="| flex">
+                    <img src="./assets/rMail/spam.svg" alt="">
+                    <span>Spam</span>
+                </button>
+            </div>
+            <section class="search | flex">
+                <p>1-50 <span>of</span> 347</p>
+                <button class="| flex">
+                    <<
+                </button>
+                <button class="| flex">
+                    >>
+                </button>
+                <div class="search__input | flex">
+                    <input placeholder="Search Messages" type="text" />
+                </div>
+            </section>
+        </form>
+    </header>
+</body>
+</html>

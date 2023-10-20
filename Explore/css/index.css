@@ -1,0 +1,358 @@
+/*
+    Fonts
+*/
+@font-face {
+	font-family: "Moon Flower Bold";
+	src: url("../ExploreSite/fonts/Moon Flower Bold.woff2") format("woff2");
+}
+
+/*
+    Variables
+*/
+:root {
+	--clr-primary-700: hsl(78, 95%, 59%);
+	--clr-primary-300: hsl(317, 100%, 50%);
+	--clr-primary-200: hsl(202, 78%, 48%);
+	--clr-primary-020: hsl(27, 100%, 50%);
+
+	--clr-neutral-500: hsl(0, 0%, 51%);
+	--clr-neutral-100: hsl(0, 0%, 25%);
+
+	--clr-translucent: rgb(255 255 255 / 0.25);
+}
+
+/*
+    General Styling
+*/
+body {
+	background-image: url("../ExploreSite/images/background.jpg");
+	background-attachment: fixed;
+	font-family: "Moon Flower Bold";
+}
+
+.wrapper {
+	width: 80vw;
+	max-width: 55rem;
+	margin-inline: auto;
+}
+
+/*
+    Header Styles
+*/
+.main-header {
+	padding-block: 2rem;
+}
+
+.main-header__nav,
+.main-header__list {
+	width: 100%;
+	display: flex;
+	gap: 3rem;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.main-header__ham {
+	width: 2rem;
+	aspect-ratio: 1;
+	display: flex;
+	flex-direction: column;
+	gap: calc(1rem / 3);
+}
+
+.main-header__ham span {
+	display: block;
+	height: 0.2rem;
+	background-color: var(--clr-neutral-100);
+}
+
+.main-header__list {
+	width: 80vw;
+	padding: 1rem;
+	flex-direction: column;
+	position: absolute;
+	top: 8rem;
+	left: 50%;
+	z-index: 999;
+	translate: -50%;
+	color: var(--clr-primary-700);
+	background-color: var(--clr-neutral-500);
+	font-size: 2rem;
+	box-shadow: 0 0 0 9999vmax rgb(0 0 0 / 0.25);
+
+	opacity: 0;
+	visibility: hidden;
+}
+
+/*
+    Main Styles
+*/
+.main {
+	color: white;
+}
+
+.main__header-section,
+.main article {
+	position: relative;
+	padding: 1.5rem;
+	margin-bottom: 1rem;
+	background-color: var(--clr-translucent);
+	border-left: 0.25rem solid var(--primary-article-color);
+	overflow: hidden;
+}
+
+.main h2 {
+	color: var(--primary-article-color);
+	font-size: 1.5rem;
+}
+
+.main__article-large h2 {
+	font-size: 2rem;
+}
+
+.main h3 {
+	font-weight: bold;
+	font-size: 1.5rem;
+}
+
+.main__header-section {
+	--primary-article-color: var(--clr-primary-200);
+
+	font-size: 2rem;
+	color: var(--primary-article-color);
+}
+
+.main__article-small {
+	--primary-article-color: var(--clr-primary-020);
+}
+
+.main__article-large {
+	--primary-article-color: var(--clr-primary-300);
+}
+
+.main__carousel {
+	--primary-article-color: var(--clr-primary-200);
+
+	aspect-ratio: 16/9;
+	position: relative;
+}
+
+.main__carousel-img-container {
+	display: flex;
+	position: absolute;
+	inset: 0;
+	z-index: -1;
+
+	translate: 0;
+	transition: 0.2s ease-in-out translate;
+}
+
+.main__carousel img {
+	width: 100%;
+}
+
+.main__carousel-controls {
+	display: flex;
+	justify-content: space-between;
+	position: absolute;
+	inset: 60% 5% 0 5%;
+}
+
+.main__carousel-controls button {
+	transform: scale(3);
+}
+
+.main__carousel-indicators {
+	display: flex;
+	gap: 0.5rem;
+	position: absolute;
+	bottom: 5%;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.main__carousel-indicator {
+	width: 0.5rem;
+	aspect-ratio: 1;
+	background-color: var(--clr-translucent);
+	border-radius: 100%;
+}
+
+.main__carousel-indicator.active {
+	background-color: var(--primary-article-color);
+}
+
+.main article[data-trending]::after {
+	content: url("../ExploreSite/images/icons/flame.svg");
+	width: 1.25rem;
+	position: absolute;
+	right: 0.6rem;
+	top: 0.35rem;
+}
+
+.main article[data-trending]::before {
+	content: "";
+	width: 7rem;
+	aspect-ratio: 1;
+	position: absolute;
+	right: 0;
+	top: 0;
+	rotate: 45deg;
+	translate: 50% -50%;
+	background-color: var(--primary-article-color);
+}
+
+/*
+    Social Links Styles
+*/
+.social-links__list {
+	width: 100%;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-rows: repeat(2, 1fr);
+	justify-content: space-evenly;
+	gap: 2rem;
+}
+
+.social-links__list img {
+	width: 4rem;
+	aspect-ratio: 1;
+}
+
+/*
+	Footer Styles
+*/
+.main-footer {
+	padding-block: 1rem;
+	text-align: center;
+	color: white;
+}
+
+/* Animations and Animation Classes */
+.main-header__list.fade-in {
+	animation: mobile-menu-fade-in 0.2s ease-in-out forwards;
+}
+.main-header__list.fade-out {
+	animation: mobile-menu-fade-out 0.2s ease-in-out forwards;
+}
+
+@keyframes mobile-menu-fade-in {
+	0% {
+		visibility: visible;
+		opacity: 0;
+	}
+
+	100% {
+		visibility: visible;
+		opacity: 1;
+	}
+}
+
+@keyframes mobile-menu-fade-out {
+	0% {
+		visibility: visible;
+		opacity: 1;
+	}
+
+	100% {
+		visibility: hidden;
+		opacity: 0;
+	}
+}
+
+/* 
+    DESKTOP DESIGN
+*/
+@media screen and (min-width: 48em) {
+	/*
+        General Styles
+    */
+	body {
+		background-size: 100% 100%;
+		background-repeat: no-repeat;
+	}
+
+	/* 
+        Header Styles
+    */
+	.main-header__logo {
+		min-width: 15rem;
+	}
+
+	.main-header__list {
+		position: unset;
+		translate: unset;
+		background-color: unset;
+		box-shadow: unset;
+		opacity: 1;
+		visibility: visible;
+		flex-direction: row;
+
+		font-size: 2.75rem;
+	}
+
+	.main-header__list.fade-out {
+		animation: unset;
+	}
+
+	.main-header__ham {
+		display: none;
+	}
+
+	/*
+		Main Styles
+	*/
+	.main__article-wrapper,
+	.main article {
+		display: flex;
+		gap: 1rem;
+	}
+
+	.main h2 {
+		font-size: 3rem;
+	}
+
+	.main h3 {
+		font-size: 2rem;
+	}
+
+	.main__article-small img {
+		width: 8rem;
+		aspect-ratio: 1;
+	}
+
+	.main__article-large img {
+		width: 15rem;
+	}
+
+	.main__article-info {
+		margin-top: 3rem;
+		display: flex;
+		gap: 1rem;
+	}
+
+	.main__carousel-controls {
+		inset: 0 5%;
+	}
+
+	.main__carousel-info {
+		max-width: 15rem;
+		text-align: center;
+		position: absolute;
+		right: 5%;
+		bottom: 10%;
+	}
+
+	/* 
+		Social Links Styles
+	*/
+	.social-links {
+		position: fixed;
+		right: 0;
+		top: 20%;
+	}
+
+	.social-links__list {
+		display: unset;
+	}
+}

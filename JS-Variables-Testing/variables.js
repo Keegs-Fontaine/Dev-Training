@@ -1,0 +1,15 @@
+let webpageTitle
+let shoppingCartCostTotal
+let significantOther
+let hasUserChecked
+let carFuelEfficiency
+let currentDate
+let currentWeekDay
+let dayCount
+let pageHeader
+let areFieldsMatching
+let userHasRecievedSNAP
+let isAdmin
+let phoneCallTime
+let allFriends
+let addressFieldSecondLine

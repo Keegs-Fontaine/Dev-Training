@@ -1,0 +1,21 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;700&display=swap");
+
+body {
+	font-family: "Open sans";
+}
+
+$clr-primary: #b91f31;
+$clr-neutral-100: #333;
+$clr-neutral-500: #d8d8d8;
+
+@mixin media($bp: 35em, $direction: "up") {
+	@if $direction == "up" {
+		@media screen and (min-width: $bp) {
+			@content;
+		}
+	} @else {
+		@media screen and (max-width: $bp) {
+			@content;
+		}
+	}
+}

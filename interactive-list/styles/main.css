@@ -1,0 +1,32 @@
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --clr-primary: rgb(116, 116, 220);
+}
+
+.header {
+    font-size: 2rem;
+    color: var(--clr-primary);
+}
+
+button {
+    all: unset;
+    padding: 1rem;
+    font-size: 1.1rem;
+    border-radius: 999rem;
+    border: 0.25rem solid var(--clr-primary);
+    cursor: pointer;
+    transition: 0.2s ease-in-out opacity;
+}
+
+li:hover,
+button:hover {
+    opacity: 0.75
+}
+
+li {
+    cursor: pointer;
+}
+

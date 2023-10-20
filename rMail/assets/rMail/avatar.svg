@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="35px" height="35px" viewBox="0 0 35 35" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>avatar</title>
+    <defs>
+        <circle id="path-1" cx="14.4" cy="14.4" r="14.4"></circle>
+    </defs>
+    <g id="rMail-Menu" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Default" transform="translate(-850.000000, -33.000000)">
+            <g id="avatar" transform="translate(853.000000, 36.000000)">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <circle stroke="#FFFFFF" stroke-width="2.4" cx="14.4" cy="14.4" r="15.6"></circle>
+                <path d="M14.1429682,3.2516129 C17.7887385,3.2516129 20.7442192,6.20709364 20.7442192,9.85286389 C20.7442192,12.4353342 19.2612907,14.671448 17.100521,15.756118 C20.8246916,17.2211326 23.5236933,21.7972202 23.5236933,29.4828997 C23.5236933,38.9810906 19.4015755,39.2089718 14.3166854,39.2089718 L14.1215941,39.2088404 C9.12677749,39.2016049 5.10967742,38.8593189 5.10967742,29.4828997 C5.10967742,21.9281848 7.71748041,17.3779893 11.3433369,15.832206 C9.0970595,14.7791379 7.54171726,12.4976357 7.54171726,9.85286389 C7.54171726,6.20709364 10.497198,3.2516129 14.1429682,3.2516129 Z" id="Combined-Shape" fill="#FFFFFF" mask="url(#mask-2)"></path>
+            </g>
+        </g>
+    </g>
+</svg>
