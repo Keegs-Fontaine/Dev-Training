@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<style>
+			* {
+				padding: 0;
+				margin: 0;
+			}
+
+			body {
+				padding: 1rem;
+			}
+
+			h1 {
+				margin-bottom: 0;
+				font-size: 2rem;
+			}
+
+			p {
+				margin-bottom: 2rem;
+			}
+
+			label {
+				display: block;
+			}
+
+			input,
+			button {
+				margin-bottom: 2rem;
+			}
+
+			input,
+			button {
+				padding: 0.75rem 1.5rem;
+			}
+
+			button {
+				border: 0;
+				color: white;
+				background-color: rgb(43, 80, 192);
+			}
+
+			.highlight {
+				color: rgb(43, 80, 192);
+				font-weight: bold;
+			}
+		</style>
+
+		<title>ZipCodes</title>
+	</head>
+	<body>
+		<h1>Zip Code Lookup</h1>
+		<p>Type your Zip Code to see some details</p>
+
+		<form action="/">
+			<div>
+				<label for="zipcode">ZIP CODE</label>
+				<input
+					placeholder="text goes here..."
+					pattern="\d{5}"
+					autofocus
+					type="text"
+					name="zipcode"
+					required
+				/>
+			</div>
+
+			<button type="submit">SUBMIT</button>
+		</form>
+
+		<section class="results"></section>
+
+		<script>
+			const form = document.querySelector("form")
+			const zipCodeInput = document.querySelector("input")
+			const results = document.querySelector(".results")
+
+			form.addEventListener("submit", async e => {
+				e.preventDefault()
+
+				try {
+					const res = await fetch(`https://api.zippopotam.us/us/${zipCodeInput.value}`)
+					const data = await res.json()
+
+					let resultsData = ""
+					data.places.forEach(place => {
+						resultsData += `<p> <span class="highlight">${place["place name"]}</span>, ${place.state}</p>`
+					})
+
+					results.innerHTML = resultsData
+				} catch (error) {
+					console.log("ERRRORRRRR" + error)
+					results.innerHTML = `<p>THERE WAS AN ERROR</p>`
+				}
+
+				zipCodeInput.value = ""
+			})
+		</script>
+	</body>
+</html>

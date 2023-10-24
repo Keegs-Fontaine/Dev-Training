@@ -4,7 +4,79 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" href="css/main.css" />
+		<!-- Google Fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;800&display=swap" rel="stylesheet" />
 		<title>Weather</title>
 	</head>
-	<body></body>
+	<body class="min-h-screen grid place-content-center">
+		<main class="text-center">
+			<h1 class="font-bold text-3xl">Weather Lookup</h1>
+			<p class="mb-4 italic">Type your Zip Code to see the weather</p>
+
+			<form action="/">
+				<div>
+					<label class="font-bold" for="zipcode">ZIP CODE</label>
+					<input
+						class="block border-2 p-2 mx-auto text-center"
+						placeholder="text goes here..."
+						pattern="\d{5}"
+						autofocus
+						type="text"
+						name="zipcode"
+						required
+					/>
+				</div>
+
+				<button class="py-4 px-6 mt-6 bg-clr-primary text-white" type="submit">SUBMIT</button>
+			</form>
+
+			<section id="results" class="hidden">
+				<h2 class="text-2xl"></h2>
+				<p degree="&deg;F" class="text-[5rem] after:content-[attr(degree)]">fdas</p>
+				<button class="py-4 px-6 mt-6 bg-clr-primary text-white">Change Location</button>
+			</section>
+		</main>
+
+		<script>
+			const form = document.querySelector("form")
+			const zipCodeInput = document.querySelector("input")
+			const results = document.querySelector("#results")
+
+			const change = () => {
+				results.classList.toggle("hidden")
+				form.classList.toggle("hidden")
+			}
+
+			results.querySelector("button").addEventListener("click", change)
+
+			form.addEventListener("submit", async e => {
+				e.preventDefault()
+
+				try {
+					const res = await fetch(
+						`https://api.openweathermap.org/data/2.5/weather?zip=${zipCodeInput.value},&appid=ac89c665200aec3cf94e1a6fd0ecb685&units=imperial`
+					)
+					const { name, main } = await res.json()
+
+					const temperature = results.querySelector("p")
+					results.querySelector("h2").innerText = name
+
+					const b = -2.55 * main.feels_like + 255
+					const r = 2.55 * main.feels_like
+					temperature.style.color = `rgb(${r} 0 ${b})`
+					temperature.innerText = main.feels_like
+
+					zipCodeInput.value = ""
+
+					change()
+				} catch (error) {
+					console.log("ERRRORRRRR" + error)
+					results.querySelector("h2").innerText = "THERE WAS AN ERROR"
+					change()
+				}
+			})
+		</script>
+	</body>
 </html>
