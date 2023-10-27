@@ -27,6 +27,7 @@
 body {
 	background-image: url("../ExploreSite/images/background.jpg");
 	background-attachment: fixed;
+	background-size: cover;
 	font-family: "Moon Flower Bold";
 }
 
@@ -318,7 +319,7 @@ body {
 
 	.main__article-small img {
 		width: 8rem;
-		aspect-ratio: 1;
+		max-height: 8rem;
 	}
 
 	.main__article-large img {
