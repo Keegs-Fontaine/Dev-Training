@@ -562,6 +562,10 @@ video {
   width: 25rem;
 }
 
+.w-32 {
+  width: 8rem;
+}
+
 .flex-col {
   flex-direction: column;
 }
@@ -572,10 +576,6 @@ video {
 
 .gap-2 {
   gap: 0.5rem;
-}
-
-.gap-\[2rem\] {
-  gap: 2rem;
 }
 
 .gap-\[5rem\] {

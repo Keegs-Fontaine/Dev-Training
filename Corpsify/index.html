@@ -24,7 +24,7 @@
 			</form>
 			<section class="overflow-scroll | sidebar" id="sidebar__sound-return-section"></section>
 		</aside>
-		<main class="hidden p-4" id="main">
+		<main class="p-4 hidden" id="main">
 			<section class="mb-8">
 				<h2 class="text-clr-primary-100 font-bold text-6xl" id="name">${data.name}</h2>
 				<p id="username">by ${data.username}</p>
@@ -37,7 +37,10 @@
 				</audio>
 				<a href="#" class="px-6 grid place-content-center text-white bg-clr-primary-100">
 					<p>Download</p>
-					<p></p>
+					<p>
+						File Size:
+						<span id="filesize">Bytes</span>
+					</p>
 				</a>
 			</section>
 			<section class="mb-8 grid gap-2">
@@ -57,7 +60,7 @@
 			<section>
 				<h2 class="text-bold text-2xl">Waveform</h2>
 				<div>
-					<img src="" alt="Img Waveform" />
+					<img class="w-32" src="" alt="Img Waveform" />
 				</div>
 			</section>
 		</main>

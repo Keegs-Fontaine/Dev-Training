@@ -1,5 +1,5 @@
 // Function Imports
-import setMainSongContent from "./setMainSongContent"
+import setMainSongContent from "./setSongContent"
 import fetchData from "./fetchData"
 
 // Interfaces / Type declarations
