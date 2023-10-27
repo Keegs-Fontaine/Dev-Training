@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="/src/main.css" />
+		<script type="module" src="/src/main.ts" defer></script>
+		<title>Corpsify</title>
+	</head>
+	<body class="min-h-screen flex">
+		<aside class="w-[25rem] h-screen flex flex-col border-r-2" id="sidebar">
+			<form class="px-2 py-10 border-b-2" id="sidebar__sound-request-form" action="/">
+				<h2 class="text-4xl">Sound Search</h2>
+				<div class="flex">
+					<input
+						class="py-2 px-4 border-2 border-black"
+						id="sidebar__search-input"
+						type="text"
+						placeholder="text goes here"
+						required
+					/>
+					<button class="px-8 text-white bg-clr-primary-100" type="submit">SEARCH</button>
+				</div>
+			</form>
+			<section class="overflow-scroll | sidebar" id="sidebar__sound-return-section"></section>
+		</aside>
+		<main class="hidden p-4" id="main">
+			<section class="mb-8">
+				<h2 class="text-clr-primary-100 font-bold text-6xl" id="name">${data.name}</h2>
+				<p id="username">by ${data.username}</p>
+				<p id="tags">${data.tags}</p>
+			</section>
+			<section class="mb-8 flex gap-[5rem]">
+				<audio controls>
+					<source type="audio/mp3" />
+					Your browser does not support the audio element.
+				</audio>
+				<a href="#" class="px-6 grid place-content-center text-white bg-clr-primary-100">
+					<p>Download</p>
+					<p></p>
+				</a>
+			</section>
+			<section class="mb-8 grid gap-2">
+				<div>
+					<p class="text-bold text-2xl">Created On:</p>
+					<p id="created"></p>
+				</div>
+				<div>
+					<p class="text-bold text-2xl">Download Count:</p>
+					<p id="num_downloads"></p>
+				</div>
+				<div>
+					<p class="text-bold text-2xl">Average Rating:</p>
+					<p id="avg_rating"></p>
+				</div>
+			</section>
+			<section>
+				<h2 class="text-bold text-2xl">Waveform</h2>
+				<div>
+					<img src="" alt="Img Waveform" />
+				</div>
+			</section>
+		</main>
+	</body>
+</html>
