@@ -1,0 +1,16 @@
+@use "./globals" as *
+
+// COMPONENTS
+@use "./components/Header"
+@use "./components/Person"
+
+// MAIN APP STYLES
+
+.main
+    display: grid
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr))
+    gap: 4rem
+
+    h1
+        text-align: center
+        font-weight: bold

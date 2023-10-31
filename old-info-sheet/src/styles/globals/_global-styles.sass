@@ -1,0 +1,32 @@
+@use "./assets" as *
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&display=swap')
+
+
+html
+    font-family: 'Montserrat', sans-serif
+
+.wrapper
+    max-width: 80em
+    padding-inline: 1rem
+    margin-inline: auto
+ 
+[data-team="Admin &amp; PM"]
+    --clr-main-default: var(--clr-primary-admin)
+
+[data-team="Development"]
+    --clr-main-default: var(--clr-primary-dev)
+
+[data-team="Design"]
+    --clr-main-default: var(--clr-primary-design)
+
+[data-team="UX"]
+    --clr-main-default: var(--clr-primary-ux)
+
+[data-team="Video"]
+    --clr-main-default: var(--clr-primary-video)
+
+[data-team="Communication"]
+    --clr-main-default: var(--clr-primary-comm)
+
+[data-team="ALL"]
+    --clr-main-default: black

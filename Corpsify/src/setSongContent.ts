@@ -11,7 +11,7 @@ export default async function setMainSongContent(soundId: number) {
 	const mainChildElements: NodeListOf<HTMLElement> = main!.querySelectorAll("*")
 
 	mainChildElements.forEach((domNode: HTMLElement) => {
-		domNode.innerText = data[domNode.id]
+		if (domNode.id) domNode.innerText = data[domNode.id]
 	})
 
 	main!.querySelector("audio")!.src = data.previews["preview-lq-mp3"]

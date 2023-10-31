@@ -1,0 +1,25 @@
+// VARIABLES
+:root
+    --clr-primary-admin: #CF8D62
+    --clr-primary-comm: #A60006
+    --clr-primary-design: #D9CB00
+    --clr-primary-dev: #0071DD
+    --clr-primary-ux: #15A245
+    --clr-primary-video: #6600aa
+
+    --clr-primary-starred: #C1AB5A 
+
+    --clr-neutral-300: hsl(0 0% 31%)
+    --clr-neutral-800: hsl(0 0% 85%)
+
+    --clr-main-default: red
+
+// MEDIA QUERIES
+@mixin media($bp: 68em, $direction: "up")
+    @if $direction == "up"
+        @media screen and (min-width: $bp)
+            @content
+
+    @else
+        @media screen and (max-width: $bp) 
+            @content
