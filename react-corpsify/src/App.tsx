@@ -1,35 +1,38 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+// Types
+import { SoundDetails } from "./types/soundTypes"
 
-function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+interface SoundDetailsContext {
+	soundDetails: SoundDetails | null
+	setSoundDetails: (soundDetails: SoundDetails | null) => void
 }
 
-export default App
+// Sections
+import SongSidebar from "./sections/SoundSidebar"
+import MainSoundContent from "./sections/MainSoundContent"
+
+// Hooks
+import { useState, createContext } from "react"
+
+// Context API
+export const MainSoundContentContext = createContext<SoundDetailsContext>({
+	soundDetails: null,
+	setSoundDetails: () => {},
+})
+
+export default function App() {
+	const [soundDetails, setSoundDetails] = useState<SoundDetails | null>(null)
+
+	const detailsValue = {
+		soundDetails,
+		setSoundDetails,
+	}
+
+	return (
+		<section className="flex flex-col items-center md:flex-row md:items-start">
+			<MainSoundContentContext.Provider value={detailsValue}>
+				<SongSidebar />
+				<MainSoundContent />
+			</MainSoundContentContext.Provider>
+		</section>
+	)
+}
