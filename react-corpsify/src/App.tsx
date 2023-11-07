@@ -1,30 +1,45 @@
 // Types
 import { SoundDetails } from "./types/soundTypes"
 
-interface SoundDetailsContext {
+interface GlobalSoundDetails {
 	soundDetails: SoundDetails | null
-	setSoundDetails: (soundDetails: SoundDetails | null) => void
+	setSoundDetails: (soundDetails: SoundDetails) => void
+	isSoundLoading: boolean
+	setIsSoundLoading: (value: boolean) => void
+	playlistSounds: SoundDetails[]
+	setPlaylistSounds: () => void
 }
 
 // Sections
 import SongSidebar from "./sections/SoundSidebar"
 import MainSoundContent from "./sections/MainSoundContent"
+import QueueList from "./sections/QueueList"
 
 // Hooks
 import { useState, createContext } from "react"
 
 // Context API
-export const MainSoundContentContext = createContext<SoundDetailsContext>({
+export const MainSoundContentContext = createContext<GlobalSoundDetails>({
 	soundDetails: null,
 	setSoundDetails: () => {},
+	isSoundLoading: false,
+	setIsSoundLoading: () => {},
+	playlistSounds: [],
+	setPlaylistSounds: () => {},
 })
 
 export default function App() {
 	const [soundDetails, setSoundDetails] = useState<SoundDetails | null>(null)
+	const [isSoundLoading, setIsSoundLoading] = useState<boolean>(false)
+	const [playlistSounds, setPlaylistSounds] = useState<SoundDetails[]>([])
 
 	const detailsValue = {
 		soundDetails,
 		setSoundDetails,
+		isSoundLoading,
+		setIsSoundLoading,
+		playlistSounds,
+		setPlaylistSounds,
 	}
 
 	return (
@@ -32,6 +47,7 @@ export default function App() {
 			<MainSoundContentContext.Provider value={detailsValue}>
 				<SongSidebar />
 				<MainSoundContent />
+				<QueueList />
 			</MainSoundContentContext.Provider>
 		</section>
 	)

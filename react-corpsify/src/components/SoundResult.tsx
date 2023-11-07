@@ -11,7 +11,7 @@ import { useContext } from "react"
 import { MainSoundContentContext } from "../App"
 
 export default function SongResult({ name, username, id, activeSoundId, setActiveSoundId }: SoundResultProps) {
-	const { setSoundDetails } = useContext(MainSoundContentContext)
+	const { setSoundDetails, setIsSoundLoading } = useContext(MainSoundContentContext)
 
 	return (
 		<article
@@ -20,11 +20,14 @@ export default function SongResult({ name, username, id, activeSoundId, setActiv
 			}`}
 			onClick={async () => {
 				setActiveSoundId(id)
-				setSoundDetails(
-					await fetchData(
-						`https://freesound.org/apiv2/sounds/${id}?token=eTn9vAatgMdzT4sB0qHhkOAU0lM8cw4eZgVo5cyx`
-					)
+				setIsSoundLoading(true)
+
+				const data = await fetchData(
+					`https://freesound.org/apiv2/sounds/${id}?token=eTn9vAatgMdzT4sB0qHhkOAU0lM8cw4eZgVo5cyx`
 				)
+
+				setSoundDetails(data)
+				setIsSoundLoading(false)
 			}}
 		>
 			<h3>{name}</h3>

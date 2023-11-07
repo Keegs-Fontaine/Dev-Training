@@ -5,13 +5,17 @@ import { useContext } from "react"
 import { MainSoundContentContext } from "../App"
 
 export default function MainSoundContent() {
-	const { soundDetails } = useContext(MainSoundContentContext)
+	const { soundDetails, isSoundLoading } = useContext(MainSoundContentContext)
 
-	if (!soundDetails) {
-		return <h1>No sound :(</h1>
+	if (isSoundLoading) {
+		return (
+			<h1 className="w-screen h-screen grid place-content-center text-3xl text-clr-primary-100 uppercase">
+				Loading Song
+			</h1>
+		)
 	}
 
-	return (
+	return soundDetails ? (
 		<main className="w-screen max-w-[35rem] p-4 pt-9">
 			<div className="mb-10 grid gap-4">
 				<h1 className="font-bold text-3xl text-clr-primary-100 before:content-['Now_Playing'] before:block before:text-gray-400 before:font-light before:text-base">
@@ -36,5 +40,9 @@ export default function MainSoundContent() {
 				<img className="w-full" src={soundDetails.images["waveform_l"]} alt="" />
 			</div>
 		</main>
+	) : (
+		<h1 className="w-full h-screen grid place-content-center text-2xl text-gray-500 italic uppercase">
+			Search To See Results
+		</h1>
 	)
 }
