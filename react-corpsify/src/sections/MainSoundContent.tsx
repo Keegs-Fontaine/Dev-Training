@@ -3,9 +3,12 @@ import { useContext } from "react"
 
 // Context
 import { MainSoundContentContext } from "../App"
+import { GlobalPlaylistContext } from "../App"
 
 export default function MainSoundContent() {
 	const { soundDetails, isSoundLoading } = useContext(MainSoundContentContext)
+	const { playlistSounds, setPlaylistSounds, currentlyPlayingIndex, setCurrentlyPlayingIndex } =
+		useContext(GlobalPlaylistContext)
 
 	if (isSoundLoading) {
 		return (
@@ -22,16 +25,37 @@ export default function MainSoundContent() {
 					{soundDetails.name}
 				</h1>
 				<p className="text-gray-500 italic">by {soundDetails.username}</p>
-				<p className="font-bold">Tags: {soundDetails.tags.join(", ")}</p>
+				<p className="fonts-bold">Tags: {soundDetails.tags.join(", ")}</p>
 			</div>
 			<div className="mb-10 flex gap-7">
-				<a className="flex items-center px-6 bg-clr-primary-200 text-white" href="#">
+				<a
+					className="flex items-center px-6 bg-clr-primary-200 text-white"
+					href="#"
+					onClick={() => {
+						const playlistIdArr = playlistSounds.map(soundDetails => soundDetails.id)
+
+						if (playlistIdArr.includes(soundDetails.id)) {
+							setCurrentlyPlayingIndex(playlistIdArr.indexOf(soundDetails.id))
+							return
+						}
+
+						setPlaylistSounds([
+							...playlistSounds.slice(0, currentlyPlayingIndex),
+							soundDetails,
+							...playlistSounds.slice(currentlyPlayingIndex),
+						])
+					}}
+				>
 					Play
 				</a>
-				<a className="flex items-center px-6 bg-clr-primary-200 text-white" href="#">
+				<a
+					className="flex items-center px-6 bg-clr-primary-300 text-clr-primary-200"
+					href="#"
+					onClick={() => setPlaylistSounds([...playlistSounds, soundDetails])}
+				>
 					Add To Playlist
 				</a>
-				<a className="flex items-center flex-col ml-auto px-6 py-1 bg-clr-primary-200 text-white" href="">
+				<a className="flex items-center flex-col ml-auto px-6 py-1 bg-clr-primary-100 text-white" href="">
 					Download
 					<p className="text-[0.5rem]">File Size: {(soundDetails.filesize / 1_000_000).toFixed(1)} MB</p>
 				</a>

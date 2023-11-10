@@ -1,13 +1,19 @@
 // Types
 import { SoundDetails } from "./types/soundTypes"
+import { Dispatch } from "react"
 
 interface GlobalSoundDetails {
 	soundDetails: SoundDetails | null
-	setSoundDetails: (soundDetails: SoundDetails) => void
+	setSoundDetails: Dispatch<SetStateAction<SoundDetails | null>>
 	isSoundLoading: boolean
-	setIsSoundLoading: (value: boolean) => void
+	setIsSoundLoading: Dispatch<SetStateAction<boolean>>
+}
+
+interface GlobalPlaylistDetails {
 	playlistSounds: SoundDetails[]
-	setPlaylistSounds: () => void
+	setPlaylistSounds: Dispatch<SetStateAction<SoundDetails[]>>
+	currentlyPlayingIndex: number
+	setCurrentlyPlayingIndex: Dispatch<SetStateAction<number>>
 }
 
 // Sections
@@ -16,7 +22,7 @@ import MainSoundContent from "./sections/MainSoundContent"
 import QueueList from "./sections/QueueList"
 
 // Hooks
-import { useState, createContext } from "react"
+import { useState, createContext, SetStateAction } from "react"
 
 // Context API
 export const MainSoundContentContext = createContext<GlobalSoundDetails>({
@@ -24,31 +30,39 @@ export const MainSoundContentContext = createContext<GlobalSoundDetails>({
 	setSoundDetails: () => {},
 	isSoundLoading: false,
 	setIsSoundLoading: () => {},
+})
+
+export const GlobalPlaylistContext = createContext<GlobalPlaylistDetails>({
 	playlistSounds: [],
 	setPlaylistSounds: () => {},
+	currentlyPlayingIndex: 0,
+	setCurrentlyPlayingIndex: () => {},
 })
 
 export default function App() {
 	const [soundDetails, setSoundDetails] = useState<SoundDetails | null>(null)
 	const [isSoundLoading, setIsSoundLoading] = useState<boolean>(false)
 	const [playlistSounds, setPlaylistSounds] = useState<SoundDetails[]>([])
-
-	const detailsValue = {
-		soundDetails,
-		setSoundDetails,
-		isSoundLoading,
-		setIsSoundLoading,
-		playlistSounds,
-		setPlaylistSounds,
-	}
+	const [currentlyPlayingIndex, setCurrentlyPlayingIndex] = useState<number>(0)
 
 	return (
 		<section className="flex flex-col items-center md:flex-row md:items-start">
-			<MainSoundContentContext.Provider value={detailsValue}>
-				<SongSidebar />
-				<MainSoundContent />
-				<QueueList />
-			</MainSoundContentContext.Provider>
+			<GlobalPlaylistContext.Provider
+				value={{ playlistSounds, setPlaylistSounds, currentlyPlayingIndex, setCurrentlyPlayingIndex }}
+			>
+				<MainSoundContentContext.Provider
+					value={{
+						soundDetails,
+						setSoundDetails,
+						isSoundLoading,
+						setIsSoundLoading,
+					}}
+				>
+					<SongSidebar />
+					<MainSoundContent />
+					<QueueList />
+				</MainSoundContentContext.Provider>
+			</GlobalPlaylistContext.Provider>
 		</section>
 	)
 }

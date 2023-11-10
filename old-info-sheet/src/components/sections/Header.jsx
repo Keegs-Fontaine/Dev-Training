@@ -1,7 +1,7 @@
 // Image Assets
 import logo from "../../assets/logo-bsu.svg"
 
-export default function Header({ students, filterStudentsFunc }) {
+export default function Header(props) {
 	const teamNames = Array.from(new Set(students.map(student => student.team)))
 
 	return (

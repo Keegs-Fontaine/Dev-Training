@@ -29,7 +29,7 @@ export default function SongSidebar() {
 			</button>
 
 			<aside
-				className={`w-screen h-screen transition-transform absolute bg-white overflow-scroll md:static md:translate-x-0 md:max-w-[25rem] md:border-r-2 ${
+				className={`w-screen h-screen transition-transform absolute z-[500] bg-white overflow-scroll md:static md:translate-x-0 md:max-w-[25rem] md:border-r-2 ${
 					isMobileActive ? "translate-x-0" : "translate-x-[-100%]"
 				}`}
 			>

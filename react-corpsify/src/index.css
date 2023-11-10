@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+	.playlist-active {
+		@apply border-b-[0.1rem] border-b-gray-300;
+	}
+}

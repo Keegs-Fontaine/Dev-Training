@@ -1,20 +1,21 @@
-import { createContext, useState } from "react"
-import CountComponent from "./CountComponent"
-import CountConsumer from "./CountConsumer"
-import "./App.css"
-
-export const CountContext = createContext(null)
+import { useState, useReducer } from "react"
 
 function App() {
-	const countState = useState(0)
+	const [countState, setCountState] = useState(0)
+	const [state, dispatch] = useReducer((state, actions) => {
+		if (actions.type === "inc") return state + 1
+		if (actions.type === "dec") return state - 1
+	}, 0)
 
 	return (
-		<CountContext.Provider value={countState}>
-			<h1>Count: {countState[0]}</h1>
-			<button onClick={() => countState[1](prev => prev - 1)}>--</button>
-			<CountComponent />
-			<CountConsumer />
-		</CountContext.Provider>
+		<main style={{ width: "100vw", display: "grid", placeContent: "center" }}>
+			<h1 style={{ textAlign: "center" }}>{countState}</h1>
+			<button onClick={() => setCountState(countState + 1)}>Increment</button>
+
+			<h2 style={{ textAlign: "center" }}>{state}</h2>
+			<button onClick={() => dispatch({ type: "inc" })}>Increment</button>
+			<button onClick={() => dispatch({ type: "dec" })}>Decrement</button>
+		</main>
 	)
 }
 
