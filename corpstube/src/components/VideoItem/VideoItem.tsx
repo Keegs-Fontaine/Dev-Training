@@ -1,0 +1,26 @@
+// Types
+import { VideoResponseSnippetObj } from "../../types/videoItemTypes"
+
+// Styles
+import "./VideoItem.scss"
+
+// lib
+import { formatDistance } from "date-fns"
+
+export default function VideoItem({ publishedAt, title, videoOwnerChannelTitle, thumbnails }: VideoResponseSnippetObj) {
+	return (
+		<article className="video-item">
+			<div className="video-item__thumbnail">
+				<img src={thumbnails.standard ? thumbnails.standard.url : ""} alt="" />
+				<p className="video-item__duration">10:00</p>
+			</div>
+			<section>
+				<p className="video-item__title">{title}</p>
+				<div className="video-item__info-container">
+					<p className="video-item__channel">{videoOwnerChannelTitle}</p>
+					<p className="video-item__date">{formatDistance(new Date(), new Date(publishedAt))}</p>
+				</div>
+			</section>
+		</article>
+	)
+}

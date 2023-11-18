@@ -1,27 +1,24 @@
 @use "../globals/assets" as *
     
 .person
-    max-width: 21rem
     margin-bottom: 2rem
     display: flex
     align-items: center
     gap: 0.5rem
 
-    > * 
-        width: 50%
-
     &__thumbnail
+        max-width: 20rem
         position: relative
 
         img
-            max-width: 10rem
+            max-width: 20rem
             border: 0.25rem solid var(--clr-main-default)
 
     &__star
         width: 2.5rem
         position: absolute
         top: 0.25rem
-        right: 0.25rem
+        right: 0.5rem
         fill: rgb(0 0 0 / 0)
         transition: 0.2s ease-in-out fill
 

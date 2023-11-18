@@ -1,0 +1,53 @@
+.video-item {
+	$box-shadow-offset: 0.6rem;
+
+	max-width: 30rem;
+	margin-bottom: 2rem;
+	padding: 1rem;
+	background-color: white;
+	box-shadow: $box-shadow-offset $box-shadow-offset 0 0 var(--clr-primary-200);
+	border-radius: 0.25rem;
+
+	&__thumbnail {
+		aspect-ratio: 16/8.9;
+		display: grid;
+		place-content: center;
+		overflow: hidden;
+		position: relative;
+
+		img {
+			object-position: center;
+		}
+	}
+
+	&__duration {
+		$duration-position-offset: 1rem;
+
+		padding: 0.2rem;
+		position: absolute;
+		right: $duration-position-offset;
+		bottom: $duration-position-offset;
+		font-size: 0.8rem;
+		background-color: black;
+		color: white;
+	}
+
+	&__info-section {
+		margin-bottom: 0.4rem;
+		display: grid;
+		gap: 0.8rem;
+	}
+
+	&__info-container {
+		display: flex;
+		justify-content: space-between;
+	}
+
+	&__title {
+		font-weight: bold;
+	}
+
+	&__date {
+		font-style: italic;
+	}
+}

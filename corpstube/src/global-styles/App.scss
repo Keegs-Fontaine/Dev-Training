@@ -1,0 +1,97 @@
+@forward "./reset";
+@forward "./utilities";
+
+.app {
+	&__header {
+		padding-top: 3.5rem;
+		padding-bottom: 0.9rem;
+		overflow: hidden;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	&__header-logo {
+		$logo-width-addition: 5vw;
+
+		width: calc(100vw + $logo-width-addition);
+		padding-inline: 1rem;
+		padding-block: 0.5rem;
+		rotate: -2.74deg;
+		background-color: var(--clr-primary-200);
+
+		img {
+			max-width: 22rem;
+			margin-inline: auto;
+			display: block;
+		}
+	}
+
+	&__header-form {
+		margin-top: 2rem;
+
+		&--input-container {
+			border: 0.2rem solid var(--clr-primary-200);
+			border-radius: 0.25rem;
+			overflow: hidden;
+
+			display: flex;
+
+			button {
+				display: flex;
+				padding-inline: 0.5rem;
+				background-color: var(--clr-primary-200);
+			}
+
+			input {
+				padding-block: 0.75rem;
+				padding-inline: 1.25rem;
+				text-align: center;
+				font-size: 1.1rem;
+				color: var(--clr-primary-200);
+			}
+		}
+
+		&--suggested-searches {
+			background-color: var(--clr-primary-060);
+		}
+	}
+
+	&__main {
+		padding-inline: 1.2rem;
+		padding-block: 2rem;
+		overflow: hidden;
+	}
+
+	&__footer {
+		padding: 1rem;
+		display: flex;
+		justify-content: center;
+		// position: absolute;
+		// bottom: 0;
+		// left: 0;
+		// right: 0;
+		text-transform: uppercase;
+
+		p {
+			padding-block: 0.3rem;
+			position: relative;
+			background-color: var(--clr-primary-060);
+
+			&::before {
+				content: "";
+				width: 100%;
+				height: 0.15rem;
+				position: absolute;
+				left: 0;
+				top: 0;
+				background-color: var(--clr-primary-200);
+			}
+
+			span {
+				font-weight: bold;
+				color: var(--clr-primary-200);
+			}
+		}
+	}
+}
