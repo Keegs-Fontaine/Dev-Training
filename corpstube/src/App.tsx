@@ -1,5 +1,6 @@
 // Pages
 import Home from "./pages/Home/Home"
+import VideoPage from "./pages/VideoPage/VideoPage"
 
 // Assets
 import logo from "./assets/Logo.svg"
@@ -9,7 +10,7 @@ import search from "./assets/icon-search.svg"
 import "./global-styles/App.scss"
 
 // React Router
-import { Routes, Route, Link } from "react-router-dom"
+import { Routes, Route } from "react-router-dom"
 
 export default function () {
 	return (
@@ -34,6 +35,7 @@ export default function () {
 				</header>
 				<Routes>
 					<Route path="/" element={<Home />} />
+					<Route path="video/:videoId" element={<VideoPage />} />
 				</Routes>
 			</main>
 			<footer className="app__footer | alternative-bg">
