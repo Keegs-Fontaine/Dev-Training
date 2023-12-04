@@ -6,7 +6,7 @@ import "./VideoItem.scss"
 
 // lib
 import { Link } from "react-router-dom"
-import { formatDistance } from "date-fns"
+import { formatDistanceToNow } from "date-fns"
 
 export default function VideoItem({
 	publishedAt,
@@ -16,16 +16,16 @@ export default function VideoItem({
 	resourceId,
 }: VideoResponseSnippetObj) {
 	return (
-		<Link className="video-item" to={`video/${resourceId.videoId}`}>
+		<Link className="video-item" to={`/video/${resourceId.videoId}`}>
 			<div className="video-item__thumbnail">
 				<img src={thumbnails.standard ? thumbnails.standard.url : ""} alt="" />
-				<p className="video-item__duration">10:00</p>
+				{/* <p className="video-item__duration">10:00</p> */}
 			</div>
 			<section>
 				<p className="video-item__title">{title}</p>
 				<div className="video-item__info-container">
 					<p className="video-item__channel">{videoOwnerChannelTitle}</p>
-					<p className="video-item__date">{formatDistance(new Date(), new Date(publishedAt))}</p>
+					<p className="video-item__date">{formatDistanceToNow(new Date(publishedAt))}</p>
 				</div>
 			</section>
 		</Link>

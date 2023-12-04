@@ -1,27 +1,31 @@
 // Hooks
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
 
 // Context
 import { GlobalPlaylistContext } from "../App"
 
 export default function QueueList() {
-	const { playlistSounds, currentlyPlayingIndex, setCurrentlyPlayingIndex } = useContext(GlobalPlaylistContext)
+	let currentIndex = 0
+
+	const { playlistSounds, currentlyPlaying, setCurrentlyPlaying } = useContext(GlobalPlaylistContext)
+
+	useEffect(() => {
+		setCurrentlyPlaying(playlistSounds[currentIndex])
+	})
+
+	if (currentlyPlaying)
+		currentIndex = playlistSounds.indexOf(currentlyPlaying) === -1 ? 0 : playlistSounds.indexOf(currentlyPlaying)
 
 	return (
 		<article className="w-[25rem] fixed right-0 bottom-0 bg-clr-primary-200 text-white p-8 rounded-tl-[2rem]">
 			<h3 className="uppercase border-b-2">now playing</h3>
 			<section className="py-8">
-				<h4 className="mb-4 uppercase">{playlistSounds[currentlyPlayingIndex]?.name}</h4>
+				<h4 className="mb-4 uppercase">{currentlyPlaying?.name}</h4>
 				<audio
 					controls
-					src={playlistSounds[currentlyPlayingIndex]?.previews["preview-hq-mp3"]}
+					src={currentlyPlaying?.previews["preview-hq-mp3"]}
 					onEnded={() => {
-						if (playlistSounds[currentlyPlayingIndex + 1]) {
-							setCurrentlyPlayingIndex((prev: number) => prev + 1)
-							return
-						}
-
-						setCurrentlyPlayingIndex(0)
+						setCurrentlyPlaying(playlistSounds[currentIndex + 1])
 					}}
 				></audio>
 			</section>
@@ -31,10 +35,10 @@ export default function QueueList() {
 					return (
 						<section
 							className={`w-fit cursor-pointer ${
-								i === currentlyPlayingIndex && "border-b-2 text-clr-primary-300"
+								i === currentIndex && "border-b-2 text-clr-primary-300"
 							}`}
 							key={sound.id}
-							onClick={() => setCurrentlyPlayingIndex(i)}
+							onClick={() => setCurrentlyPlaying(playlistSounds[i])}
 						>
 							{sound.name}
 						</section>

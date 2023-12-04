@@ -9,7 +9,6 @@ import { useContext } from "react"
 
 // Context
 import { MainSoundContentContext } from "../App"
-import { GlobalPlaylistContext } from "../App"
 
 // Assets
 import currentlyPlaying from "../assets/icon-playing.svg"
@@ -17,18 +16,6 @@ import inCurrentPlaylist from "../assets/icon-playlist.svg"
 
 export default function SongResult({ name, username, id, activeSoundId, setActiveSoundId }: SoundResultProps) {
 	const { setSoundDetails, setIsSoundLoading } = useContext(MainSoundContentContext)
-	const { playlistSounds, currentlyPlayingIndex } = useContext(GlobalPlaylistContext)
-
-	const playlistIdArr = playlistSounds.map(soundDetails => soundDetails.id)
-
-	const setSoundIcon = () => {
-		if (playlistIdArr.includes(id))
-			return id === playlistSounds[currentlyPlayingIndex].id ? (
-				<img src={currentlyPlaying} alt="" />
-			) : (
-				<img src={inCurrentPlaylist} alt="" />
-			)
-	}
 
 	return (
 		<article
@@ -51,7 +38,7 @@ export default function SongResult({ name, username, id, activeSoundId, setActiv
 				<h3>{name}</h3>
 				<p className="text-gray-500 italic">{username}</p>
 			</div>
-			<div>{setSoundIcon()}</div>
+			<div>{}</div>
 		</article>
 	)
 }

@@ -7,8 +7,7 @@ import { GlobalPlaylistContext } from "../App"
 
 export default function MainSoundContent() {
 	const { soundDetails, isSoundLoading } = useContext(MainSoundContentContext)
-	const { playlistSounds, setPlaylistSounds, currentlyPlayingIndex, setCurrentlyPlayingIndex } =
-		useContext(GlobalPlaylistContext)
+	const { playlistSounds, setPlaylistSounds, setCurrentlyPlaying } = useContext(GlobalPlaylistContext)
 
 	if (isSoundLoading) {
 		return (
@@ -31,20 +30,7 @@ export default function MainSoundContent() {
 				<a
 					className="flex items-center px-6 bg-clr-primary-200 text-white"
 					href="#"
-					onClick={() => {
-						const playlistIdArr = playlistSounds.map(soundDetails => soundDetails.id)
-
-						if (playlistIdArr.includes(soundDetails.id)) {
-							setCurrentlyPlayingIndex(playlistIdArr.indexOf(soundDetails.id))
-							return
-						}
-
-						setPlaylistSounds([
-							...playlistSounds.slice(0, currentlyPlayingIndex),
-							soundDetails,
-							...playlistSounds.slice(currentlyPlayingIndex),
-						])
-					}}
+					onClick={() => setCurrentlyPlaying(soundDetails)}
 				>
 					Play
 				</a>

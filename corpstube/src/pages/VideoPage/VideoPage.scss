@@ -1,0 +1,22 @@
+@use "../../global-styles/utilities.scss" as *;
+
+.video-page {
+	.main-style-header {
+		margin-bottom: 2.1rem;
+	}
+
+	@include media(80em) {
+		.main-style-header {
+			margin-bottom: unset;
+		}
+
+		display: flex;
+		justify-content: space-between;
+		gap: 1.5rem;
+
+		div {
+			max-width: 70rem;
+			flex-grow: 1;
+		}
+	}
+}

@@ -12,8 +12,8 @@ interface GlobalSoundDetails {
 interface GlobalPlaylistDetails {
 	playlistSounds: SoundDetails[]
 	setPlaylistSounds: Dispatch<SetStateAction<SoundDetails[]>>
-	currentlyPlayingIndex: number
-	setCurrentlyPlayingIndex: Dispatch<SetStateAction<number>>
+	currentlyPlaying: SoundDetails | null
+	setCurrentlyPlaying: Dispatch<SetStateAction<SoundDetails | null>>
 }
 
 // Sections
@@ -35,20 +35,20 @@ export const MainSoundContentContext = createContext<GlobalSoundDetails>({
 export const GlobalPlaylistContext = createContext<GlobalPlaylistDetails>({
 	playlistSounds: [],
 	setPlaylistSounds: () => {},
-	currentlyPlayingIndex: 0,
-	setCurrentlyPlayingIndex: () => {},
+	currentlyPlaying: null,
+	setCurrentlyPlaying: () => {},
 })
 
 export default function App() {
 	const [soundDetails, setSoundDetails] = useState<SoundDetails | null>(null)
-	const [isSoundLoading, setIsSoundLoading] = useState<boolean>(false)
+	const [isSoundLoading, setIsSoundLoading] = useState(false)
 	const [playlistSounds, setPlaylistSounds] = useState<SoundDetails[]>([])
-	const [currentlyPlayingIndex, setCurrentlyPlayingIndex] = useState<number>(0)
+	const [currentlyPlaying, setCurrentlyPlaying] = useState<SoundDetails | null>(null)
 
 	return (
 		<section className="flex flex-col items-center md:flex-row md:items-start">
 			<GlobalPlaylistContext.Provider
-				value={{ playlistSounds, setPlaylistSounds, currentlyPlayingIndex, setCurrentlyPlayingIndex }}
+				value={{ playlistSounds, setPlaylistSounds, currentlyPlaying, setCurrentlyPlaying }}
 			>
 				<MainSoundContentContext.Provider
 					value={{

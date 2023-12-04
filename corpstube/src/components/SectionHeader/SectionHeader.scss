@@ -1,0 +1,47 @@
+@use "../../global-styles/utilities" as *;
+
+.main-style-header {
+	@include wrapper();
+
+	position: relative;
+	text-align: center;
+
+	&__text {
+		padding-block: 0.2rem;
+		font-size: 2rem;
+		color: var(--clr-primary-200);
+		text-transform: uppercase;
+		font-weight: bold;
+		background-color: white;
+		border-radius: 0.25rem;
+	}
+
+	&::after {
+		content: "";
+		width: 100%;
+		height: 0.4rem;
+		position: absolute;
+		left: 1.5rem;
+		translate: 0 -0.1rem;
+		background-color: var(--clr-primary-060);
+	}
+
+	&--line {
+		@include media() {
+			width: 20rem;
+			margin-left: 0;
+			translate: 0 -2.5rem;
+		}
+	}
+
+	&--line::before {
+		content: "";
+		height: 5rem;
+		width: 0.25rem;
+		position: absolute;
+		left: 2rem;
+		bottom: 100%;
+		z-index: -1;
+		background-color: var(--clr-primary-200);
+	}
+}

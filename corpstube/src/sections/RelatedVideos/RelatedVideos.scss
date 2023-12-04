@@ -1,0 +1,20 @@
+@use "../../global-styles/utilities" as *;
+
+.related-videos {
+	max-width: 25rem;
+	margin-top: 2.8rem;
+	margin-inline: auto;
+
+	&__video-list {
+		$spacing: 2rem;
+
+		margin-block: $spacing;
+		display: grid;
+		place-content: center;
+		gap: $spacing;
+	}
+
+	.main-style-header {
+		width: 100%;
+	}
+}

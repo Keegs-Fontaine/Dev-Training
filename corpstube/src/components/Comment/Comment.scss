@@ -1,0 +1,12 @@
+.comment {
+	&__username {
+		font-size: 1.2rem;
+		font-weight: bold;
+		color: var(--clr-primary-200);
+	}
+
+	&__date {
+		margin-bottom: 0.5rem;
+		color: var(--clr-primary-200);
+	}
+}

@@ -1,4 +1,42 @@
 :root {
 	--clr-primary-060: hsl(64, 84%, 71%);
 	--clr-primary-200: hsl(223, 57%, 21%);
+	--clr-primary-220: hsl(222, 29%, 36%);
+
+	--box-shadow-primary: 0.6rem 0.6rem 0 0 var(--clr-primary-200);
+}
+
+.alternative-bg {
+	background-image: url("../assets/bg-yellow.svg");
+}
+
+.bg-clr-accent {
+	padding-block: 0.25rem;
+	padding-inline: 0.5rem;
+	background-color: var(--clr-primary-200);
+	color: white;
+}
+
+@mixin flow($margin: 1rem) {
+	> *:not(:last-child) {
+		margin-bottom: $margin;
+	}
+}
+
+@mixin wrapper($width: 90vw, $maxWidth: 75rem) {
+	width: $width;
+	max-width: $maxWidth;
+	margin-inline: auto;
+}
+
+@mixin media($size: 50em, $direction: "up") {
+	@if $direction == "up" {
+		@media screen and (min-width: $size) {
+			@content;
+		}
+	} @else {
+		@media screen and (max-width: $size) {
+			@content;
+		}
+	}
 }

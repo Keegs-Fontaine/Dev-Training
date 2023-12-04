@@ -17,13 +17,22 @@ export type VideoResponseSnippetObj = {
 	}
 }
 
-export type VideoItem = {
-	etag: string
+export type CommentItem = {
+	id: number
+	videoId: string
+	name: string
+	comment: string
+	date: string
+}
+
+export type VideoItemType = {
 	id: string
 	tags: string[]
 	snippet: VideoResponseSnippetObj
+	views: number
+	comments: CommentItem[]
 }
 
 export type VideoResponseData = {
-	items: VideoItem[]
+	items: VideoItemType[]
 }

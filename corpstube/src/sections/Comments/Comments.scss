@@ -1,0 +1,45 @@
+@use "../../global-styles/utilities" as *;
+
+.comments {
+	padding: 1.5rem;
+	background-color: white;
+
+	&__form {
+		$form-spacing: 1.5rem;
+
+		padding-bottom: $form-spacing;
+		margin-bottom: $form-spacing;
+		border-bottom: 0.1rem solid var(--clr-primary-200);
+	}
+
+	&__count {
+		width: fit-content;
+		margin-bottom: 1rem;
+	}
+
+	&__form-header {
+		margin-bottom: 1rem;
+		font-size: 1.75rem;
+		color: var(--clr-primary-200);
+		font-weight: bold;
+	}
+
+	&__form-input {
+		width: 100%;
+		margin-bottom: 1rem;
+		padding: 0.75rem;
+		border: 0.08rem solid var(--clr-primary-200);
+	}
+
+	&__list-container {
+		display: grid;
+		gap: 2rem;
+	}
+
+	@include media() {
+		&__form-input-container {
+			display: flex;
+			gap: 1rem;
+		}
+	}
+}

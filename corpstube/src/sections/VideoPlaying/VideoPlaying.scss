@@ -1,0 +1,89 @@
+@use "../../global-styles/utilities" as *;
+
+.video-playing {
+	margin-bottom: 1.5rem;
+
+	&__video-content {
+		iframe {
+			width: 100%;
+			aspect-ratio: 16/9;
+			border: unset;
+			// Theres a space between the video and it's info container, and I donn't know why.
+			// This margin solves that issue. Bad solution, but works.
+			margin-bottom: -4px;
+		}
+	}
+
+	&__info-container {
+		$border-radius-value: 0.5rem;
+
+		padding-inline: 1rem;
+		padding-block: 1.5rem;
+		background-color: var(--clr-primary-060);
+		color: var(--clr-primary-200);
+		border-radius: 0 0 $border-radius-value $border-radius-value;
+
+		> *:not(:last-child) {
+			margin-bottom: 1rem;
+		}
+	}
+
+	&__main-info {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		flex-wrap: wrap;
+		gap: 1rem;
+	}
+
+	&__title {
+		word-wrap: break-word;
+		font-size: 1.2rem;
+	}
+
+	&__title,
+	&__text-highlight {
+		font-weight: bold;
+	}
+
+	&__views,
+	&__date {
+		font-size: 0.8rem;
+	}
+
+	&__share {
+		padding-inline: 0.5rem;
+		padding-block: 0.25rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.25rem;
+		background-color: white;
+
+		img {
+			width: 1rem;
+		}
+	}
+
+	&__description-hide-btn {
+		width: 10rem;
+		text-align: center;
+	}
+
+	&__share,
+	&__description-hide-btn {
+		text-transform: uppercase;
+		user-select: none;
+	}
+
+	&__description {
+		padding-top: 0.5rem;
+		border-top: 0.1rem solid var(--clr-primary-200);
+	}
+
+	@include media() {
+		&__date {
+			font-size: 1rem;
+		}
+	}
+}
